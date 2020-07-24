@@ -1,9 +1,15 @@
-import * as React from 'react'
+import React, { forwardRef, Ref } from 'react'
+import { Button as A11yButton, ButtonProps as A11yProps } from 'reakit'
+import {
+  Button as ThemeAwareButton,
+  ButtonProps as ThemeAwareProps,
+} from 'theme-ui'
 
-interface Props {
-  text: string
+type Props = A11yProps & ThemeAwareProps
+
+function Button(props: Props, ref: Ref<HTMLButtonElement>) {
+  return <A11yButton {...props} ref={ref} as={ThemeAwareButton} />
 }
 
-export const ExampleComponent = ({ text }: Props) => {
-  return <div>Example Component: {text}</div>
-}
+export { A11yProps, ThemeAwareProps }
+export default forwardRef(Button)
