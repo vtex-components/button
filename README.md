@@ -1,29 +1,32 @@
-# button
+# @vtex-components/button
 
-> Made with create-react-library
+> 💡 Accessible Button component that enables users to trigger an action or event. It follows the [WAI-ARIA Button Pattern](https://www.w3.org/TR/wai-aria-practices/#button).
 
-[![NPM](https://img.shields.io/npm/v/button.svg)](https://www.npmjs.com/package/button) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/button.svg)](https://www.npmjs.com/package/@vtex-components/button) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-yarn add button
+yarn add @vtex-components/button
+```
+
+[Reakit](https://reakit.io/) and [ThemeUI](https://theme-ui.com/home) are peer dependencies, so you must add them with:
+
+```bash
+yarn add reakit theme-ui 
 ```
 
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import React from 'react'
+import Button from '@vtex-component/button'
 
-import MyComponent from 'button'
-
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+function Example() {
+  return <Button>Button Label</Button>
 }
 ```
 
 ## License
 
-MIT © [lucasaarcoverde](https://github.com/lucasaarcoverde)
+MIT © [vtex](https://github.com/vtex)
