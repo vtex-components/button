@@ -26,7 +26,9 @@
   },
   "sideEffects": false,
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.0.0",
+    "reakit": "^1.1.2",
+    "theme-ui": "^0.3.1"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^5.3.19",
@@ -48,12 +50,10 @@
     "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
+    "reakit": "^1.1.2",
+    "theme-ui": "^0.3.1",
     "ts-loader": "^8.0.1",
     "tsdx": "^0.13.2",
     "typescript": "^3.9.6"
-  },
-  "dependencies": {
-    "reakit": "^1.1.2",
-    "theme-ui": "^0.3.1"
   }
 }
