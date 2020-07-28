@@ -7,8 +7,8 @@ import {
 
 type Props = A11yProps & ThemeAwareProps
 
-function Button(props: Props, ref: Ref<HTMLButtonElement>) {
-  return <A11yButton {...props} ref={ref} as={ThemeAwareButton} />
+function Button({ as, ...props }: Props, ref: Ref<HTMLButtonElement>) {
+  return <A11yButton {...props} ref={ref} as={as ?? ThemeAwareButton} />
 }
 
 export { A11yProps, ThemeAwareProps }
