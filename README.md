@@ -20,7 +20,7 @@ yarn add reakit theme-ui
 
 ```tsx
 import React from 'react'
-import Button from '@vtex-component/button'
+import Button from '@vtex-components/button'
 
 function Example() {
   return <Button>Button Label</Button>

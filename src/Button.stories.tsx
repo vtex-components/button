@@ -2,6 +2,7 @@ import React from 'react'
 import { ThemeProvider } from 'theme-ui'
 import { withA11y } from '@storybook/addon-a11y'
 import { withKnobs, text, color, boolean } from '@storybook/addon-knobs'
+import { Checkbox, useCheckboxState } from 'reakit'
 
 import Button from '.'
 
@@ -42,6 +43,26 @@ export function TheSXProp() {
     >
       Base Button
     </Button>
+  )
+}
+
+export function TheAsProp() {
+  const checkbox = useCheckboxState()
+
+  return (
+    <ThemeProvider
+      theme={{
+        colors: {
+          background: '#FFFFFF',
+          primary: '#2F323A',
+          secondary: '#4F5D75',
+        },
+      }}
+    >
+      <Checkbox {...checkbox} as={Button}>
+        {checkbox.state ? '😄 Happy' : '😞 Sad'}
+      </Checkbox>
+    </ThemeProvider>
   )
 }
 
