@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useReducer, useRef, useEffect, forwardRef, Ref } from 'react'
 import { ThemeProvider } from 'theme-ui'
 import { withA11y } from '@storybook/addon-a11y'
 import { withKnobs, text, color, boolean } from '@storybook/addon-knobs'
-import { Checkbox, useCheckboxState } from 'reakit'
 
 import Button from '.'
 
@@ -46,8 +45,16 @@ export function TheSXProp() {
   )
 }
 
-export function TheAsProp() {
-  const checkbox = useCheckboxState()
+export function TheAsPropWithIntrinsicElement() {
+  const ref = useRef<HTMLAnchorElement>(null)
+  const [checked, toggle] = useReducer((value) => !value, false)
+
+  useEffect(() => {
+    console.warn(
+      `TheAsPropWithIntrinsicElement: Detects properly type of \`ref\` from \`as\``,
+      ref.current
+    )
+  }, [])
 
   return (
     <ThemeProvider
@@ -59,9 +66,48 @@ export function TheAsProp() {
         },
       }}
     >
-      <Checkbox {...checkbox} as={Button}>
-        {checkbox.state ? '😄 Happy' : '😞 Sad'}
-      </Checkbox>
+      <Button ref={ref} as="a" target="_blank" onClick={toggle}>
+        {checked ? '😄 Happy' : '😞 Sad'}
+      </Button>
+    </ThemeProvider>
+  )
+}
+
+const Link = forwardRef(function Link(
+  { children, ...props }: JSX.IntrinsicElements['a'],
+  ref: Ref<HTMLAnchorElement>
+) {
+  return (
+    <a ref={ref} {...props}>
+      {children}
+    </a>
+  )
+})
+
+export function TheAsPropWithCustomElement() {
+  const ref = useRef<HTMLAnchorElement>(null)
+  const [checked, toggle] = useReducer((value) => !value, false)
+
+  useEffect(() => {
+    console.warn(
+      `TheAsPropWithCustomElement: Detects properly type of \`ref\` from \`as\``,
+      ref.current
+    )
+  }, [])
+
+  return (
+    <ThemeProvider
+      theme={{
+        colors: {
+          background: '#FFFFFF',
+          primary: '#2F323A',
+          secondary: '#4F5D75',
+        },
+      }}
+    >
+      <Button ref={ref} as={Link} target="_blank" onClick={toggle}>
+        {checked ? '😄 Happy' : '😞 Sad'}
+      </Button>
     </ThemeProvider>
   )
 }
