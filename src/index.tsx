@@ -4,12 +4,17 @@ import {
   Button as ThemeAwareButton,
   ButtonProps as ThemeAwareProps,
 } from 'theme-ui'
+import { As, Props, Component } from '@vtex-components/types'
 
-type Props = A11yProps & ThemeAwareProps
+type ButtonProps<T extends As = typeof ThemeAwareButton> = Props<T, A11yProps>
 
-function Button({ as, ...props }: Props, ref: Ref<HTMLButtonElement>) {
-  return <A11yButton {...props} ref={ref} as={as ?? ThemeAwareButton} />
+const Button = (
+  { as = ThemeAwareButton, ...props }: ButtonProps<As>,
+  ref: Ref<As>
+) => {
+  return <A11yButton ref={ref} as={as} {...props} />
 }
 
-export { A11yProps, ThemeAwareProps }
-export default forwardRef(Button)
+export { ButtonProps, A11yProps, ThemeAwareProps }
+
+export default forwardRef(Button) as Component<ButtonProps>
